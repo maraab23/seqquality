@@ -180,36 +180,12 @@ data <- matrix(c(c(rep("D", 3), rep("C", 1), rep("B", 6), rep("A", 10)),
                  c(rep("A", 6), rep("D", 4), rep("C", 4), rep("B", 6)),
                  c(rep("D", 2), rep("C", 5), rep("D", 3), rep("B", 5), rep("A", 5)),
                  c(rep("D", 2), rep("C", 5), rep("B", 5), rep("A", 5), rep("D", 3))), nrow = 4, byrow = TRUE)
+```
 
+``` r
 # Generate state sequence object
 example.seq <- seqdef(data, alphabet = c("D","C","B","A"))
 ```
-
-    ##  [>] 4 distinct states appear in the data:
-
-    ##      1 = A
-
-    ##      2 = B
-
-    ##      3 = C
-
-    ##      4 = D
-
-    ##  [>] state coding:
-
-    ##        [alphabet]  [label]  [long label]
-
-    ##      1  D           D        D
-
-    ##      2  C           C        C
-
-    ##      3  B           B        B
-
-    ##      4  A           A        A
-
-    ##  [>] 4 sequences in the data set
-
-    ##  [>] min/max sequence length: 20/20
 
 ``` r
 # Save print-friendly version of sequences for graph legend
@@ -254,7 +230,7 @@ fig.data %>%
   guides(col=guide_legend(nrow=2,byrow=TRUE)) 
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+![](README_files/figure-gfm/figure-1.png)<!-- -->
 
 ## References
 

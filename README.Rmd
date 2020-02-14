@@ -88,10 +88,19 @@ data <- matrix(c(c(rep("D", 3), rep("C", 1), rep("B", 6), rep("A", 10)),
                  c(rep("A", 6), rep("D", 4), rep("C", 4), rep("B", 6)),
                  c(rep("D", 2), rep("C", 5), rep("D", 3), rep("B", 5), rep("A", 5)),
                  c(rep("D", 2), rep("C", 5), rep("B", 5), rep("A", 5), rep("D", 3))), nrow = 4, byrow = TRUE)
+```
 
+```{r, eval=FALSE}
 # Generate state sequence object
 example.seq <- seqdef(data, alphabet = c("D","C","B","A"))
+```
 
+```{r, include=FALSE}
+# Generate state sequence object
+example.seq <- seqdef(data, alphabet = c("D","C","B","A"))
+```
+
+```{r}
 # Save print-friendly version of sequences for graph legend
 example.sps <- print(example.seq, format = "SPS")
 
@@ -103,7 +112,7 @@ qual.binary.tvar <- seqquality(example.seq,
 
 Following the example of *Manzoni and Mooi-Reci (2018)*, we proceed by visualizing how the sequence quality index develops across the positions of the sequences: 
 
-```{r}
+```{r figure}
 # Preparing the data for ggplot (-> long format)
 fig.data <- qual.binary.tvar %>%
   mutate(Sequence = example.sps) %>%

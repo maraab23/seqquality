@@ -1,6 +1,12 @@
 # Generalized sequence quality index
 
-The package only comprises a single function which computes a generalized version of the sequence quality index proposed by *Manzoni and Mooi-Reci (2018)*. The index is defined as
+![Status](https://img.shields.io/badge/status-early%20release-yellowgreen)
+![Version](https://img.shields.io/badge/version-0.1.0-blue)
+
+[Marcel Raab](https://marcelraab.de/)
+
+
+R/seqquality is an [R](https://www.r-project.org) package comprising only a single function which computes a generalized version of the sequence quality index proposed by *Manzoni and Mooi-Reci (2018)*. The index is defined as 
 
 <img src="https://render.githubusercontent.com/render/math?math=Q_{i}=\frac{\sum_{i=1}^{k}{q_{i}i^{w}_{i}}}{\sum_{i=1}^{k}{q_{max}i^{w%20}_{i}}}" width="198" height="73" />
 

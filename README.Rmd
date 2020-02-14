@@ -1,0 +1,133 @@
+---
+title: "Sequence Quality Index"
+output: 
+  github_document:
+    pandoc_args: --webtex
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(seqquality)
+library(tidyverse)
+library(TraMineR)
+```
+
+![Status](https://img.shields.io/badge/status-early%20release-yellowgreen)
+![Version](https://img.shields.io/badge/version-0.1.0-blue)
+
+**[Marcel Raab](https://marcelraab.de/)**
+
+
+R/seqquality is an [R](https://www.r-project.org) package comprising only a single function which computes a generalized version of the sequence quality index proposed by *Manzoni and Mooi-Reci (2018)*. The index is defined as 
+
+$$
+Q_{i}=\frac{\sum_{i=1}^{k}{q_{i}i^{w}_{i}}}{\sum_{i=1}^{k}{q_{max}i^{w }_{i}}}
+$$
+
+where $i$ indicates the position within the sequence and $k$ the total length of the sequence. $w$ is a weighting factor simultaneously affecting how strong the index reacts to (and recovers from) a change in state quality. $q_{i}$ is a weighting factor denoting the quality of a state at position $i$. The function normalizes $q_{i}$ to have values between 0 and 1. Therefore, $q_{max}=1$. If no quality vector is specified, the first state of the alphabet is coded 0, whereas the last state is coded 1. For the states in-between each step up the hierarchy increases the value of the vector by ${1}/{(l(A)-1)}$, with $l(A)$ indicating the length of the alphabet. This procedure was borrowed from the `seqprecstart`, a helper function used for the implementation of the sequence precarity index proposed by *Ritschard et al. (2018)*. 
+
+
+The package can be installed using `install_github` from the `devtools` package:
+
+```{r install, eval=FALSE}
+install.packages("devtools")
+library(devtools)
+install_github("maraab23/seqquality")
+library(seqquality)
+```
+
+## Examples
+
+First, you need to load additional libraries and data to run the examples.
+
+```{r examplePrep, eval=FALSE}
+library(tidyverse)
+library(TraMineR)
+
+data(actcal)
+# Define state sequence object
+actcal.seq <- seqdef(actcal[,13:24])
+```
+
+```{r, include=FALSE}
+data(actcal)
+# Define state sequence object
+actcal.seq <- seqdef(actcal[,13:24])
+```
+
+
+We use the `actcal` example data that come with the `TraMineR`package. This dataset comprises 2000 individual sequences of monthly activity statuses from January to December 2000 (type `?actcal` for getting more details). The sequence alphabet is defined as: 
+
+- A = Full-time paid job (> 37 hours)
+- B = Long part-time paid job (19-36 hours) 
+- C = Short part-time paid job (1-18 hours) 
+- D = Unemployed (no work) 
+
+For illustration purposes we impose the following state quality hierarchy: $D<C<B<A$
+
+The default version of the quality index with $w=1$ can be obtained by typing:
+
+```{r}
+seqquality(actcal.seq, stqual = 4:1)
+```
+
+When `time.varying=TRUE` the index is computed for every position $i$ by incrementing the length of the sequences by 1 until the full sequence length is reached. The following command computes the time-varying quality index using three different weighting factors $w=(.5,1,2)$.
+
+```{r}
+seqquality(actcal.seq, 
+           stqual = c(4:1), 
+           weight = c(.5,1,2), 
+           time.varying = TRUE)
+```
+
+Finally, we present an example illustrating how to implement the original binary sequence quality index. For this purpose we create example data containing four sequences and four states. Only the last two states of the alphabet (A & B) are considered as success (`stqual = c(0,0,1,1)`).
+
+```{r}
+# Generate example data
+data <- matrix(c(c(rep("D", 3), rep("C", 1), rep("B", 6), rep("A", 10)),
+                 c(rep("A", 6), rep("D", 4), rep("C", 4), rep("B", 6)),
+                 c(rep("D", 2), rep("C", 5), rep("D", 3), rep("B", 5), rep("A", 5)),
+                 c(rep("D", 2), rep("C", 5), rep("B", 5), rep("A", 5), rep("D", 3))), nrow = 4, byrow = TRUE)
+
+# Generate state sequence object
+example.seq <- seqdef(data, alphabet = c("D","C","B","A"))
+
+# Save print-friendly version of sequences for graph legend
+example.sps <- print(example.seq, format = "SPS")
+
+# Compute time-varying quality index using a binary definition of  quality
+qual.binary.tvar <- seqquality(example.seq,
+                               stqual = c(0,0,1,1),
+                               time.varying = TRUE)
+```
+
+Following the example of *Manzoni and Mooi-Reci (2018)*, we proceed by visualizing how the sequence quality index develops across the positions of the sequences: 
+
+```{r}
+# Preparing the data for ggplot (-> long format)
+fig.data <- qual.binary.tvar %>%
+  mutate(Sequence = example.sps) %>%
+  select(-weight) %>%
+  pivot_longer(-Sequence, 
+               names_to = "Position",
+               values_to = "Sequence Quality") %>%
+  mutate(Position = as.numeric(substring(Position, first = 3)))
+
+# Plot the development of the sequence quality index
+fig.data %>%
+  ggplot(aes(x = Position, 
+             y = `Sequence Quality`, 
+             color = Sequence)) +
+  geom_line(size=1) +
+  theme_minimal() +
+  theme(legend.position="bottom") +
+  guides(col=guide_legend(nrow=2,byrow=TRUE)) 
+```
+
+
+## References
+
+Manzoni, A., & Mooi-Reci, I. (2018). *Measuring Sequence Quality*. In G. Ritschard & M. Studer (Eds.), Sequence Analysis and Related Approaches (pp. 261–278). doi: 10.1007/978-3-319-95420-2_15
+
+Ritschard, G., Bussi, M., & O’Reilly, J. (2018). *An Index of Precarity for Measuring Early Employment Insecurity*. In G. Ritschard & M. Studer (Eds.), Sequence Analysis and Related Approaches (pp. 279–295). doi: 10.1007/978-3-319-95420-2_16
+

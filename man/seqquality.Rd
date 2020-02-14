@@ -31,9 +31,9 @@ The generalized sequence index is a generalization of the index proposed by \cit
 \deqn{Q(x) = \frac{\sum_{i=1}^{k}{q_{i}i^{w}_{i}}}{\sum_{i=1}^{k}{q_{max}i^{w }_{i}}}}
 where \eqn{i} indicates the position within the sequence and \eqn{k} the total length of the sequence.
 \eqn{w} is a weighting factor simultaneously affecting how strong the index reacts to (and recovers from) a change in state quality.
-\eqn{q_{i}} is weighting factor denoting the quality of a state at position \eqn{i}. The function normalizes the quality factor
-(\code{stqual}) to have a values between 0 and 1. Therefore, \eqn{q_{max}=1}. If no quality vector is specified (\code{stqual= NULL}),
-the first state of the alphabet is coded 0, whereas the state at the top is coded 1. For the states in-between each step up the hierarchy
+\eqn{q_{i}} is a weighting factor denoting the quality of a state at position \eqn{i}. The function normalizes the quality factor
+(\code{stqual}) to have values between 0 and 1. Therefore, \eqn{q_{max}=1}. If no quality vector is specified (\code{stqual= NULL}),
+the first state of the alphabet is coded 0, whereas the last state is coded 1. For the states in-between each step up the hierarchy
 increases the value of the vector by \eqn{\frac{1}{(l(A)−1)}}, with \eqn{l(A)} indicating the length of the alphabet. This procedure was
 borrowed from \code{\link[TraMineR]{seqprecstart }}.
 

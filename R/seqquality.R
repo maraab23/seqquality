@@ -21,7 +21,7 @@
 #' (\code{stqual}) to have values between 0 and 1. Therefore, \eqn{q_{max}=1}. If no quality vector is specified (\code{stqual= NULL}),
 #' the first state of the alphabet is coded 0, whereas the last state is coded 1. For the states in-between each step up the hierarchy
 #' increases the value of the vector by \eqn{\frac{1}{(l(A)−1)}}, with \eqn{l(A)} indicating the length of the alphabet. This procedure was
-#' borrowed from \code{\link[TraMineR]{seqprecstart }}.
+#' borrowed from \code{\link[TraMineR]{seqprecstart}}.
 #'
 #' It is possible to assign the same quality score to multiple states to the alphabet. As a matter of fact, a \code{stqual} vector only
 #' comprising the values 0 and 1 is identical to the original (binary) version of the quality index proposed by \cite{Manzoni & Mooi-Reci 2018}.

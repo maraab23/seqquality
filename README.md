@@ -28,7 +28,7 @@ weighting factor simultaneously affecting how strong the index reacts to
 (and recovers from) a change in state quality.
 ![q\_{i}](https://latex.codecogs.com/png.latex?q_%7Bi%7D "q_{i}") is a
 weighting factor denoting the quality of a state at position
-![i](https://latex.codecogs.com/png.latex?i "i"). The function
+<img src="https://latex.codecogs.com/svg.latex?i" title="i" />. The function
 normalizes ![q\_{i}](https://latex.codecogs.com/png.latex?q_%7Bi%7D
 "q_{i}") to have values between 0 and 1. Therefore,
 ![q\_{max}=1](https://latex.codecogs.com/png.latex?q_%7Bmax%7D%3D1

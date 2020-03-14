@@ -11,35 +11,24 @@ only a single function which computes a generalized version of the
 sequence quality index proposed by *Manzoni and Mooi-Reci (2018)*. The
 index is defined as
 
-<img src="https://latex.codecogs.com/svg.latex?Q(x)&space;=&space;\frac{\sum_{i=1}^{k}{q_{i}i^{w}_{i}}}{\sum_{i=1}^{k}{q_{max}i^{w&space;}_{i}}}" title="Q(x) = \frac{\sum_{i=1}^{k}{q_{i}i^{w}_{i}}}{\sum_{i=1}^{k}{q_{max}i^{w }_{i}}}" />
+<img src="https://latex.codecogs.com/svg.latex?SQ&space;=&space;\frac{\sum_{i=1}^{k}{q_{i}i^{w}_{i}}}{\sum_{i=1}^{k}{q_{max}i^{w&space;}_{i}}}" title="SQ = \frac{\sum_{i=1}^{k}{q_{i}i^{w}_{i}}}{\sum_{i=1}^{k}{q_{max}i^{w }_{i}}}" />
 
-  
-![
-Q\_{i}=\\frac{\\sum\_{i=1}^{k}{q\_{i}i^{w}\_{i}}}{\\sum\_{i=1}^{k}{q\_{max}i^{w
-}\_{i}}}
-](https://latex.codecogs.com/png.latex?%0AQ_%7Bi%7D%3D%5Cfrac%7B%5Csum_%7Bi%3D1%7D%5E%7Bk%7D%7Bq_%7Bi%7Di%5E%7Bw%7D_%7Bi%7D%7D%7D%7B%5Csum_%7Bi%3D1%7D%5E%7Bk%7D%7Bq_%7Bmax%7Di%5E%7Bw%20%7D_%7Bi%7D%7D%7D%0A
-"
-Q_{i}=\\frac{\\sum_{i=1}^{k}{q_{i}i^{w}_{i}}}{\\sum_{i=1}^{k}{q_{max}i^{w }_{i}}}
-")  
 
 where <img src="https://latex.codecogs.com/svg.latex?i" title="i" /> indicates the
 position within the sequence and
-![k](https://latex.codecogs.com/png.latex?k "k") the total length of the
+<img src="https://latex.codecogs.com/svg.latex?k" title="k" /> the total length of the
 sequence. ![w](https://latex.codecogs.com/png.latex?w "w") is a
 weighting factor simultaneously affecting how strong the index reacts to
 (and recovers from) a change in state quality.
-![q\_{i}](https://latex.codecogs.com/png.latex?q_%7Bi%7D "q_{i}") is a
+<img src="https://latex.codecogs.com/svg.latex?q_{i}" title="q_{i}" /> is a
 weighting factor denoting the quality of a state at position
 <img src="https://latex.codecogs.com/svg.latex?i" title="i" />. The function
-normalizes ![q\_{i}](https://latex.codecogs.com/png.latex?q_%7Bi%7D
-"q_{i}") to have values between 0 and 1. Therefore,
-![q\_{max}=1](https://latex.codecogs.com/png.latex?q_%7Bmax%7D%3D1
-"q_{max}=1"). If no quality vector is specified, the first state of the
+normalizes <img src="https://latex.codecogs.com/svg.latex?q_{i}" title="q_{i}" /> to have values between 0 and 1. Therefore,
+<img src="https://latex.codecogs.com/svg.latex?q_{max}=1" title="q_{max}=1" />. If no quality vector is specified, the first state of the
 alphabet is coded 0, whereas the last state is coded 1. For the states
 in-between each step up the hierarchy increases the value of the vector
 by
-![{1}/{(l(A)-1)}](https://latex.codecogs.com/png.latex?%7B1%7D%2F%7B%28l%28A%29-1%29%7D
-"{1}/{(l(A)-1)}"), with
+<img src="https://latex.codecogs.com/svg.latex?{1}/{(l(A)-1)}" title="{1}/{(l(A)-1)}" />, with
 ![l(A)](https://latex.codecogs.com/png.latex?l%28A%29 "l(A)") indicating
 the length of the alphabet. This procedure was borrowed from the
 `seqprecstart`, a helper function used for the implementation of the

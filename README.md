@@ -20,7 +20,7 @@ Q\_{i}=\\frac{\\sum\_{i=1}^{k}{q\_{i}i^{w}\_{i}}}{\\sum\_{i=1}^{k}{q\_{max}i^{w
 Q_{i}=\\frac{\\sum_{i=1}^{k}{q_{i}i^{w}_{i}}}{\\sum_{i=1}^{k}{q_{max}i^{w }_{i}}}
 ")  
 
-where ![i](https://latex.codecogs.com/png.latex?i "i") indicates the
+where <img src="https://latex.codecogs.com/svg.latex?i" title="i" /> indicates the
 position within the sequence and
 ![k](https://latex.codecogs.com/png.latex?k "k") the total length of the
 sequence. ![w](https://latex.codecogs.com/png.latex?w "w") is a

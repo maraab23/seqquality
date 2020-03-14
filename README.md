@@ -11,6 +11,8 @@ only a single function which computes a generalized version of the
 sequence quality index proposed by *Manzoni and Mooi-Reci (2018)*. The
 index is defined as
 
+<img src="https://latex.codecogs.com/svg.latex?Q(x)&space;=&space;\frac{\sum_{i=1}^{k}{q_{i}i^{w}_{i}}}{\sum_{i=1}^{k}{q_{max}i^{w&space;}_{i}}}" title="Q(x) = \frac{\sum_{i=1}^{k}{q_{i}i^{w}_{i}}}{\sum_{i=1}^{k}{q_{max}i^{w }_{i}}}" />
+
   
 ![
 Q\_{i}=\\frac{\\sum\_{i=1}^{k}{q\_{i}i^{w}\_{i}}}{\\sum\_{i=1}^{k}{q\_{max}i^{w

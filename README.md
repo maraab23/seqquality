@@ -97,12 +97,11 @@ seqquality(actcal.seq, stqual = 4:1)
     ## # ... with 1,990 more rows
 
 When `time.varying=TRUE` the index is computed for every position
-![i](https://latex.codecogs.com/png.latex?i "i") by incrementing the
+<img src="https://latex.codecogs.com/svg.latex?i" title="i" /> by incrementing the
 length of the sequences by 1 until the full sequence length is reached.
 The following command computes the time-varying quality index using
 three different weighting factors
-![w=(.5,1,2)](https://latex.codecogs.com/png.latex?w%3D%28.5%2C1%2C2%29
-"w=(.5,1,2)").
+<img src="https://latex.codecogs.com/svg.latex?w=(.5,1,2)" title="w=(.5,1,2)" />.
 
 ``` r
 seqquality(actcal.seq, 

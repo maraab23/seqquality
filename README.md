@@ -28,8 +28,8 @@ normalizes <img src="https://latex.codecogs.com/svg.latex?q_{i}" title="q_{i}" /
 alphabet is coded 0, whereas the last state is coded 1. For the states
 in-between each step up the hierarchy increases the value of the vector
 by
-<img src="https://latex.codecogs.com/svg.latex?{1}/{(l(A)-1)}" title="{1}/{(l(A)-1)}" />, with
-![l(A)](https://latex.codecogs.com/png.latex?l%28A%29 "l(A)") indicating
+<img src="https://latex.codecogs.com/svg.latex?\inline&space;{1}/{(l(A)-1)}" title="{1}/{(l(A)-1)}" />, with
+<img src="https://latex.codecogs.com/svg.latex?\inline&space;l(A)" title="l(A)" /> indicating
 the length of the alphabet. This procedure was borrowed from the
 `seqprecstart`, a helper function used for the implementation of the
 sequence precarity index proposed by *Ritschard et al. (2018)*.

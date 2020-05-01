@@ -13,22 +13,21 @@ index is defined as
 
 ![SQ](README_files/math/SQ.svg)
 
-where <img src="https://latex.codecogs.com/svg.latex?i" title="i" /> indicates the
+where ![i](README_files/math/i.svg) indicates the
 position within the sequence and
-<img src="https://latex.codecogs.com/svg.latex?k" title="k" /> the total length of the
-sequence. ![w](https://latex.codecogs.com/png.latex?w "w") is a
+![k](README_files/math/k.svg) the total length of the
+sequence. ![w](README_files/math/w.svg) is a
 weighting factor simultaneously affecting how strong the index reacts to
 (and recovers from) a change in state quality.
-<img src="https://latex.codecogs.com/svg.latex?q_{i}" title="q_{i}" /> is a
+![q_{i}](README_files/math/qi.svg) is a
 weighting factor denoting the quality of a state at position
-<img src="https://latex.codecogs.com/svg.latex?i" title="i" />. The function
-normalizes <img src="https://latex.codecogs.com/svg.latex?q_{i}" title="q_{i}" /> to have values between 0 and 1. Therefore,
-<img src="https://latex.codecogs.com/svg.latex?q_{max}=1" title="q_{max}=1" />. If no quality vector is specified, the first state of the
+![i](README_files/math/i.svg). The function
+normalizes ![q_{i}](README_files/math/qi.svg) to have values between 0 and 1. Therefore,
+![q_{max}=1](README_files/math/qmax.svg). If no quality vector is specified, the first state of the
 alphabet is coded 0, whereas the last state is coded 1. For the states
 in-between each step up the hierarchy increases the value of the vector
 by
-<img src="https://latex.codecogs.com/svg.latex?\inline&space;{1}/{(l(A)-1)}" title="{1}/{(l(A)-1)}" />, with
-<img src="https://latex.codecogs.com/svg.latex?\inline&space;l(A)" title="l(A)" /> indicating
+![{1}/{(l(A)-1)}](README_files/math/quotient.svg), with ![l(A)](README_files/math/lA.svg) indicating
 the length of the alphabet. This procedure was borrowed from the
 `seqprecstart`, a helper function used for the implementation of the
 sequence precarity index proposed by *Ritschard et al. (2018)*.

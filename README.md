@@ -11,12 +11,7 @@ only a single function which computes a generalized version of the
 sequence quality index proposed by *Manzoni and Mooi-Reci (2018)*. The
 index is defined as
 
-![SQ](math/SQ.svg)
-
-![](https://latex.codecogs.com/svg.latex?\large&space;SQ&space;=&space;\frac{\sum_{i=1}^{k}{q_{i}i^{w}_{i}}}{\sum_{i=1}^{k}{q_{max}i^{w&space;}_{i}}})
-
-<img src="https://latex.codecogs.com/svg.latex?\large&space;SQ&space;=&space;\frac{\sum_{i=1}^{k}{q_{i}i^{w}_{i}}}{\sum_{i=1}^{k}{q_{max}i^{w&space;}_{i}}}" title="SQ = \frac{\sum_{i=1}^{k}{q_{i}i^{w}_{i}}}{\sum_{i=1}^{k}{q_{max}i^{w }_{i}}}" />
-
+![SQ](README_files/math/SQ.svg)
 
 where <img src="https://latex.codecogs.com/svg.latex?i" title="i" /> indicates the
 position within the sequence and

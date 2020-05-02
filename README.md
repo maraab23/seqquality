@@ -6,34 +6,16 @@ Sequence Quality Index
 
 **[Marcel Raab](https://marcelraab.de/)**
 
-R/seqquality is an [R](https://www.r-project.org) package comprising
-only a single function which computes a generalized version of the
-sequence quality index proposed by *Manzoni and Mooi-Reci (2018)*. The
-index is defined as
+`seqquality` is an [R](https://www.r-project.org) package which computes a generalized version of the sequence quality index proposed by *Manzoni and Mooi-Reci (2018)*. The index is defined as
 
 ![SQ](README_files/math/SQ.svg)
 
-where ![i](README_files/math/i.svg) indicates the
-position within the sequence and
-![k](README_files/math/k.svg) the total length of the
-sequence. ![w](README_files/math/w.svg) is a
-weighting factor simultaneously affecting how strong the index reacts to
-(and recovers from) a change in state quality.
-![q_{i}](README_files/math/qi.svg) is a
-weighting factor denoting the quality of a state at position
-![i](README_files/math/i.svg). The function
-normalizes ![q_{i}](README_files/math/qi.svg) to have values between 0 and 1. Therefore,
-![q_{max}=1](README_files/math/qmax.svg). If no quality vector is specified, the first state of the
-alphabet is coded 0, whereas the last state is coded 1. For the states
-in-between each step up the hierarchy increases the value of the vector
-by
-![{1}/{(l(A)-1)}](README_files/math/quotient.svg), with ![l(A)](README_files/math/lA.svg) indicating
-the length of the alphabet. This procedure was borrowed from the
-`seqprecstart`, a helper function used for the implementation of the
-sequence precarity index proposed by *Ritschard et al. (2018)*.
+where ![i](README_files/math/i.svg) indicates the position within the sequence and
+![k](README_files/math/k.svg) the total length of the sequence. ![w](README_files/math/w.svg) is a
+weighting factor simultaneously affecting how strong the index reacts to (and recovers from) a change in state quality.
+![q_{i}](README_files/math/qi.svg) is a weighting factor denoting the quality of a state at position ![i](README_files/math/i.svg). The function normalizes ![q_{i}](README_files/math/qi.svg) to have values between 0 and 1. Therefore, ![q_{max}=1](README_files/math/qmax.svg). If no quality vector is specified, the first state of the alphabet is coded 0, whereas the last state is coded 1. For the states in-between each step up the hierarchy increases the value of the vector by ![{1}/{(l(A)-1)}](README_files/math/quotient.svg), with ![l(A)](README_files/math/lA.svg) indicating the length of the alphabet. This procedure was borrowed from the `seqprecstart`, a helper function used for the implementation of the sequence precarity index proposed by *Ritschard et al. (2018)*.
 
-The package can be installed using `install_github` from the `devtools`
-package:
+The package can be installed using `install_github` from the `devtools` package:
 
 ``` r
 install.packages("devtools")
@@ -56,7 +38,7 @@ data(actcal)
 actcal.seq <- seqdef(actcal[,13:24])
 ```
 
-We use the `actcal` example data that come with the `TraMineR`package.
+We use the `actcal` example data that come with the [`TraMineR`](http://traminer.unige.ch/) package.
 This dataset comprises 2000 individual sequences of monthly activity
 statuses from January to December 2000 (type `?actcal` for getting more
 details). The sequence alphabet is defined as:
@@ -67,12 +49,10 @@ details). The sequence alphabet is defined as:
   - D = Unemployed (no work)
 
 For illustration purposes we impose the following state quality
-hierarchy:
-![D\<C\<B\<A](https://latex.codecogs.com/png.latex?D%3CC%3CB%3CA
-"D\<C\<B\<A")
+hierarchy: ![D\<C\<B\<A](README_files/math/hierarchy.svg "D\<C\<B\<A")
 
 The default version of the quality index with
-![w=1](https://latex.codecogs.com/png.latex?w%3D1 "w=1") can be obtained
+![w=1](README_files/math/w1.svg "w=1") can be obtained
 by typing:
 
 ``` r
@@ -95,11 +75,10 @@ seqquality(actcal.seq, stqual = 4:1)
     ## # ... with 1,990 more rows
 
 When `time.varying=TRUE` the index is computed for every position
-<img src="https://latex.codecogs.com/svg.latex?i" title="i" /> by incrementing the
+![i](README_files/math/i.svg "i") by incrementing the
 length of the sequences by 1 until the full sequence length is reached.
 The following command computes the time-varying quality index using
-three different weighting factors
-<img src="https://latex.codecogs.com/svg.latex?w=(.5,1,2)" title="w=(.5,1,2)" />.
+three different weighting factors ![w=(.5,1,2)](README_files/math/w3.svg "w=(.5,1,2)").
 
 ``` r
 seqquality(actcal.seq, 

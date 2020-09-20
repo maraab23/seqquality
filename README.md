@@ -6,14 +6,14 @@ Sequence Quality Index
 
 **[Marcel Raab](https://marcelraab.de/)**
 
-`seqquality` is an [R](https://www.r-project.org) package which computes a generalized version of the sequence quality index proposed by *Manzoni and Mooi-Reci (2018)*. The index is defined as
+`seqquality` is a [R](https://www.r-project.org) function which computes a generalized version of the sequence quality index proposed by *Manzoni and Mooi-Reci (2018)*. The index is defined as
 
 ![SQ](README_files/math/SQ.svg)
 
 where ![i](README_files/math/i.svg) indicates the position within the sequence and
 ![k](README_files/math/k.svg) the total length of the sequence. ![w](README_files/math/w.svg) is a
 weighting factor simultaneously affecting how strong the index reacts to (and recovers from) a change in state quality.
-![q_{i}](README_files/math/qi.svg) is a weighting factor denoting the quality of a state at position ![i](README_files/math/i.svg). The function normalizes ![q_{i}](README_files/math/qi.svg) to have values between 0 and 1. Therefore, ![q_{max}=1](README_files/math/qmax.svg). If no quality vector is specified, the first state of the alphabet is coded 0, whereas the last state is coded 1. For the states in-between each step up the hierarchy increases the value of the vector by ![{1}/{(l(A)-1)}](README_files/math/quotient.svg), with ![l(A)](README_files/math/lA.svg) indicating the length of the alphabet. This procedure was borrowed from the `seqprecstart`, a helper function used for the implementation of the sequence precarity index proposed by *Ritschard et al. (2018)*.
+![q_{i}](README_files/math/qi.svg) is a weighting factor denoting the quality of a state at position ![i](README_files/math/i.svg). The function normalizes ![q_{i}](README_files/math/qi.svg) to have values between 0 and 1. Therefore, ![q_{max}=1](README_files/math/qmax.svg). If no quality vector is specified, the first state of the alphabet is coded 0, whereas the last state is coded 1. For the states in-between each step up the hierarchy increases the value of the vector by ![{1}/{(l(A)-1)}](README_files/math/quotient.svg), with ![l(A)](README_files/math/lA.svg) indicating the length of the alphabet. This procedure was borrowed from  `seqprecstart`, a helper function used for the implementation of the sequence precarity index proposed by *Ritschard et al. (2018)*.
 
 The package can be installed using `install_github` from the `devtools` package:
 

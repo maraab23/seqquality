@@ -151,7 +151,7 @@ data <- matrix(c(c(rep("D", 3), rep("C", 1), rep("B", 6), rep("A", 10)),
 
 ``` r
 # Generate state sequence object
-example.seq <- seqdef(data, alphabet = c("D","C","B","A"))
+example.seq <- seqdef(data, alphabet = c("A","B","C","D"))
 ```
 
 ``` r
@@ -168,7 +168,7 @@ example.sps <- print(example.seq, format = "SPS")
 ``` r
 # Compute time-varying quality index using a binary definition of  quality
 qual.binary.tvar <- seqquality(example.seq,
-                               stqual = c(0,0,1,1),
+                               stqual = c(1,1,0,0),
                                time.varying = TRUE)
 ```
 
